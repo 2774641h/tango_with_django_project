@@ -24,6 +24,12 @@ def index(request):
     # Note that the first parameter is the template we wish to use.
     return render(request, 'rango/index.html', context=context_dict)
 
+def about(request):
+    context_dict = {}
+    context_dict['boldmessage'] = 'This is the about page!'
+
+    return render(request, 'rango/about.html', context=context_dict)
+
 def show_category(request, category_name_slug):
     # Create a context dictionary which we can pass
     # to the template rendering engine.
@@ -78,7 +84,6 @@ def add_category(request):
     # Will handle the bad form, new form, or no form supplied cases.
     # Render the form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})
-
 
 def add_page(request, category_name_slug):
     try:
