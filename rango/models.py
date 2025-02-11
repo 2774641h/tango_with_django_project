@@ -3,8 +3,7 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Category(models.Model):
-    name_length = 128
-    name = models.CharField(max_length=name_length, unique=True)
+    name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
@@ -12,9 +11,6 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
-
-    def get_name_length(self):
-        return self.name_length
 
     class Meta:
         verbose_name_plural = 'Categories'
