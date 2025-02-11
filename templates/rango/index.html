@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
 
-<html>
-<head>
-	<title>Rango</title>
-</head>
-<body>
-	<h1>Rango says...</h1>
+{% block title_block %}
+	Home
+{% endblock %}
+
+{% block body_block %}
+	<h1>Django</h1>
 	<div>
 		hey there partner! <br />
 		<strong>{{ boldmessage }}</strong><br />
@@ -37,13 +36,8 @@
 		{% else %}
 			<strong>There are no pages present.</strong>
 		{% endif %}
-		</div>
-
-	<div>
-		<a href="{% url 'rango:about' %}">About</a><br />
-		<a href="/rango/add_category/">Add a New Category</a><br />
-		<img src="{% static 'images/garchomp.png' %}"
-		alt="Picture of Garchomp, the best pokemon" />
 	</div>
-</body>
-</html>
+
+	<img src="{% static 'images/garchomp.png' %}"
+		alt="Picture of Garchomp, the best pokemon" />
+{% endblock %}
